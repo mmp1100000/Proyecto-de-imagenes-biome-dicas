@@ -18,7 +18,7 @@ key = 0;
 while key ~= 27
     
     I = dicomread(dicomlist(cnt));
-    imshow(I,[],'InitialMagnification','fit');
+    imshow(I,[],'InitialMagnification',400);
     key = getkey;
     
     if key ~= 27 && key ~= 28 && key ~= 29
