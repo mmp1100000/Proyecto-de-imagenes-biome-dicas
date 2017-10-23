@@ -17,11 +17,9 @@ while key ~= 27
     I = dicomread(dicomlist(cnt));
     imshow(I,[]);
     
-    fprintf('press a key, please');
     key = getkey;
     
     if key ~= 27 && key ~= 28 && key ~= 29
-        fprintf('press a key, please');
         key = getkey;
     end
     
