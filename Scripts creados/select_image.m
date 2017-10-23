@@ -1,6 +1,6 @@
 function [I] = select_image()
-%This function receive a directory and show all the images inside it. Then, 
-%when you press "scape", the function return the image that you were seeing
+%This function receives a directory and shows all the images inside it. Then, 
+%when "scape" pressed, the function returns the image being viewed.
 
 
 %%Turning off warnings
