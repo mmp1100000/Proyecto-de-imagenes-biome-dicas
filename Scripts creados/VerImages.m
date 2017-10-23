@@ -8,7 +8,7 @@ warning('off','MATLAB:nargchk:deprecated'); %Turn off getkey news
 
 %Prueba para ver si las modificaciones se a?aden a Github
 
-dicomlist = loadDicom('../imag/IUHARF4D');
+dicomlist = loadDicom(uigetdir);
 cnt = 1;
 key = 0;
 
