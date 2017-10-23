@@ -14,11 +14,14 @@ warning('off','MATLAB:nargchk:deprecated'); %Turn off getkey news
 dicomlist = loadDicom(uigetdir);
 cnt = 1;
 key = 0;
+s_d = get(0,'screensize'); %Screen dimensions
 
 while key ~= 27
     
     I = dicomread(dicomlist(cnt));
-    imshow(I,[],'InitialMagnification','fit');
+    figure('Position',s_d(1),s_d(2),s_d
+    imshow(I,[]);
+    
     key = getkey;
     
     if key ~= 27 && key ~= 28 && key ~= 29

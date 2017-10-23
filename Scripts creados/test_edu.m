@@ -1,3 +1,3 @@
 %Test_Edu
 
-select_image()
+select_image();
