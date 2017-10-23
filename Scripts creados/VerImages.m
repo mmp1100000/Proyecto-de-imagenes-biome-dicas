@@ -6,7 +6,7 @@ warning('off','images:dicominfo:fileVRDoesNotMatchDictionary'); %Turn off Marco'
 warning('off','MATLAB:nargchk:deprecated'); %Turn off getkey news
 %%
 
-%uigetdir crea una interfaz para seleccionar un directorio
+%uigetdir creates a visual interface for selecting the images location
 
 dicomlist = loadDicom(uigetdir);
 cnt = 1;
