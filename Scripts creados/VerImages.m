@@ -1,4 +1,3 @@
-%%Visor de Im?genes
 
 %%Turning off warnings
 %[a,MSGID] = lastwarn()
