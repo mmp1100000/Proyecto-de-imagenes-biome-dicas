@@ -1,5 +1,4 @@
 
-select_image();
+I = select_image();
 
-[X,Y] = ginput(2);
-selectedImg = I;
+phi = rectangles(I);
