@@ -6,7 +6,7 @@ warning('off','images:dicominfo:fileVRDoesNotMatchDictionary'); %Turn off Marco'
 warning('off','MATLAB:nargchk:deprecated'); %Turn off getkey news
 %%
 
-%Prueba para ver si las modificaciones se a?aden a Github
+%uigetdir crea una interfaz para seleccionar un directorio
 
 dicomlist = loadDicom(uigetdir);
 cnt = 1;
