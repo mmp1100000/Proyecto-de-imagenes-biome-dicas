@@ -29,7 +29,10 @@ while key ~= 27
         if key == 28 && cnt ~= 1
             cnt = cnt - 1;
         end
-    end
-    
+    end  
 end %Show images
 
+%If the user presses esc, mouse input is prompted
+
+[X,Y] = ginput(1);
+selectedImg = I;
