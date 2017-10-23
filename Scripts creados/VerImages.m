@@ -33,5 +33,5 @@ end %Show images
 
 %If the user presses esc, mouse input is prompted
 
-[X,Y] = ginput(1);
+[X,Y] = ginput(2);
 selectedImg = I;
