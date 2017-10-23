@@ -1,5 +1,6 @@
-imgVector = loadDicom('../imag/IUHARF4D');
+imgVector = loadDicom(uigetdir);
 figure
 imshow(dicomread(imgVector(3)),[]);
-pause
+[X,Y] = ginput(1);
 close all;
+

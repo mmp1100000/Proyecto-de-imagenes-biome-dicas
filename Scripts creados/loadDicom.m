@@ -11,6 +11,8 @@ function [ dicomVector ] = loadDicom(d)
     dicomVector = struct([]);
     for file = 1:dirLen
         if(d(file).isdir == 0)
+            info = dicominfo(strcat(path,d(file).name));
+            dicomVector = [dicomVector info];
 %             try
 %                 info = dicominfo(strcat(path,d(file).name));
 %                 dicomVector = [dicomVector info];
