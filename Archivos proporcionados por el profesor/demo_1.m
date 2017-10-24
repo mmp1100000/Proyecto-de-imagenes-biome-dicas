@@ -23,12 +23,16 @@ lambda=5; % coefficient of the weighted length term L(phi)
 alfa=-5;  % coefficient of the weighted area term A(phi)
 epsilon=1.5; % papramater that specifies the width of the DiracDelta function
 
+
+%% Informacion de los bordes
 sigma=0.8;    % scale parameter in Gaussian kernel
-G=fspecial('gaussian',15,sigma); % Caussian kernel
+G=fspecial('gaussian',15,sigma); % Caussian kernel          (G_sigma) el parámetro 15
 Img_smooth=conv2(Img,G,'same');  % smooth image by Gaussiin convolution
 [Ix,Iy]=gradient(Img_smooth);
 f=Ix.^2+Iy.^2;
-g=1./(1+f);  % edge indicator function.
+g=1./(1+f);  % edge indicator function.                              (23)
+%%
+
 
 % initialize LSF as binary step function
 c0=2;
