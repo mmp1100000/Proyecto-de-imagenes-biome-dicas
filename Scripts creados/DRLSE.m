@@ -1,18 +1,8 @@
-%  This Matlab code demonstrates an edge-based active contour model as an application of 
-%  the Distance Regularized Level Set Evolution (DRLSE) formulation in the following paper:
-%
-%  C. Li, C. Xu, C. Gui, M. D. Fox, "Distance Regularized Level Set Evolution and Its Application to Image Segmentation", 
-%     IEEE Trans. Image Processing, vol. 19 (12), pp. 3243-3254, 2010.
-%
-% Author: Chunming Li, all rights reserved
-% E-mail: lchunming@gmail.com   
-%         li_chunming@hotmail.com 
-% URL:  http://www.imagecomputing.org/~cmli//
+function [] = DRLSE(Img, phi, alfa)
+%UNTITLED7 Summary of this function goes here
+%   Detailed explanation goes here
 
-clear all;
-close all;
-
-Img=imread('prueba1.bmp');
+%%
 Img=double(Img(:,:,1));
 %% parameter setting
 timestep=5;  % time step
@@ -20,7 +10,6 @@ mu=0.2/timestep;  % coefficient of the distance regularization term R(phi)
 iter_inner=5;
 iter_outer=50;
 lambda=5; % coefficient of the weighted length term L(phi)
-alfa=-5;  % coefficient of the weighted area term A(phi)
 epsilon=1.5; % papramater that specifies the width of the DiracDelta function
 
 sigma=0.8;    % scale parameter in Gaussian kernel
@@ -30,23 +19,17 @@ Img_smooth=conv2(Img,G,'same');  % smooth image by Gaussiin convolution
 f=Ix.^2+Iy.^2;
 g=1./(1+f);  % edge indicator function.
 
-% initialize LSF as binary step function
-c0=2;
-initialLSF = c0*ones(size(Img));
-% generate the initial region R0 as two rectangles
-initialLSF(150:160,159:165)=-c0; 
-initialLSF(71:81,79:85)=-c0;
-phi=initialLSF;
 
-figure(1);
+%% Better view of Selected Zones
+figure(2);
 mesh(-phi);   % for a better view, the LSF is displayed upside down
 hold on;  contour(phi, [0,0], 'r','LineWidth',2);
 title('Initial level set function');
 view([-80 35]);
 %%
 
-
-figure(2);
+%%
+figure(3);
 imagesc(Img,[0, 255]); axis off; axis equal; colormap(gray); hold on;  contour(phi, [0,0], 'r');
 title('Initial zero level contour');
 pause(0.5);
@@ -64,7 +47,7 @@ end
 for n=1:iter_outer
     phi = drlse_edge(phi, g, lambda, mu, alfa, epsilon, timestep, iter_inner, potentialFunction);    
     if mod(n,2)==0
-        figure(2);
+        figure(3);
         imagesc(Img,[0, 255]); axis off; axis equal; colormap(gray); hold on;  contour(phi, [0,0], 'r');
     end
 end
@@ -75,7 +58,7 @@ iter_refine = 10;
 phi = drlse_edge(phi, g, lambda, mu, alfa, epsilon, timestep, iter_inner, potentialFunction);
 
 finalLSF=phi;
-figure(2);
+figure(3);
 imagesc(Img,[0, 255]); axis off; axis equal; colormap(gray); hold on;  contour(phi, [0,0], 'r');
 hold on;  contour(phi, [0,0], 'r');
 str=['Final zero level contour, ', num2str(iter_outer*iter_inner+iter_refine), ' iterations'];
@@ -92,4 +75,7 @@ axis on;
 axis([1 ncol 1 nrow -5 5]);
 set(gca,'ZTick',[-3:1:3]);
 set(gca,'FontSize',14)
+
+
+end
 

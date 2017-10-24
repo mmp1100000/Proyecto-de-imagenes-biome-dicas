@@ -2,6 +2,7 @@
 
 I = select_image();
 
-rectangles(I);
+phi = rectangles(I);
 
+DRLSE(I,phi,1.5);
 
