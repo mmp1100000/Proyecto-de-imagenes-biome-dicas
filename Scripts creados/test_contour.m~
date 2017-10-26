@@ -1,0 +1,13 @@
+%Test contour
+
+info=dicominfo('im1.bmp');
+I= imread('im1.bmp');   I= imread('im1.bmp');
+imagesc(I,[]);
+
+
+I=double(I(:,:,1));
+phi2 = rectangles(I);
+pause(5);
+
+
+DRLSE(I,phi,2);
