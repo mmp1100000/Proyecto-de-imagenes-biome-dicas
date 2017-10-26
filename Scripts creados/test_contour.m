@@ -157,7 +157,7 @@ if decision == 2
        set(dim(j),'YData',y{j});
        end
     end
-    str=['Final zero level contour, ', num2str(iter_outer*iter_inner+iter_refine), ' iterations'];
+    str=['Refined!, ', num2str(iter_outer*iter_inner+iter_refine), ' iterations'];
     title(str);
     
     decision = 27;

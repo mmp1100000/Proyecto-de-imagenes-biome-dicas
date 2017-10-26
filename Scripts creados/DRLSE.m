@@ -101,7 +101,6 @@ for n=1:iter_outer
         n
     end
 end
-                                                   
 
 % Construct a questdlg with three options
 choice = questdlg('What do you want to do?', ...
@@ -150,7 +149,7 @@ if decision == 2
        set(dim(j),'YData',y{j});
        end
     end
-    str=['Final zero level contour, ', num2str(iter_outer*iter_inner+iter_refine), ' iterations'];
+    str=['Refined!, ', num2str(iter_outer*iter_inner+iter_refine), ' iterations'];
     title(str);
     
     decision = 27;
@@ -158,7 +157,4 @@ if decision == 2
 end
 
 bucle = decision;
-
-end 
-
-end
+end     
