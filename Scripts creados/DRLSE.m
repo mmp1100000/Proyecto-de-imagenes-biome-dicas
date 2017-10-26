@@ -1,4 +1,4 @@
-function [phi] = DRLSE(Img, phi, rect)
+function [phi] = DRLSE(Img, phi)
 %UNTITLED7 Summary of this function goes here
 %   Detailed explanation goes here
 
@@ -37,7 +37,7 @@ mu=0.2/timestep;  % coefficient of the distance regularization term R(phi)
 iter_inner=5;
 epsilon=1.5; % papramater that specifies the width of the DiracDelta function
 
-sigma=0.8;    % scale parameter in Gaussian kernel
+sigma=1.2;%2;%0.8;    % scale parameter in Gaussian kernel
 G=fspecial('gaussian',5,sigma); % Caussian kernel      %%%%%%%%15
 Img_smooth=conv2(Img,G,'same');  % smooth image by Gaussiin convolution
 [Ix,Iy]=gradient(Img_smooth);
@@ -76,12 +76,17 @@ num_cont = numel(x);
 for n=1:iter_outer
     phi = drlse_edge(phi, g, lambda, mu, alfa, epsilon, timestep, iter_inner, potentialFunction);    
         pause(0.000001)
-
-        
+      
         [C] = contourc(phi, [0,0]);
         [x,y] = C2xyz(C);
+        
         numcontact=numel(x);
-        %if num_cont == numcontact
+        
+        if num_cont ~= numcontact
+            dim(numcontact) = 0;
+            num_cont = numcontact;
+        end
+        
         if numel(x) == 1
             set(dim,'XData',x{:});
             set(dim,'YData',y{:});
@@ -96,6 +101,64 @@ for n=1:iter_outer
         n
     end
 end
-fprintf('Si quiere salir, pulse escape');               %%WHILE
-bucle = getkey;
-end                                                     %%WHILE
+                                                   
+
+% Construct a questdlg with three options
+choice = questdlg('What do you want to do?', ...
+	'Options', ...
+	'Restart','Refine','Finish','Finish');
+% Handle response
+switch choice
+    case 'Restart'
+        decision = 1;
+    case 'Refine'
+        disp([choice 'Coming right up!'])
+        decision = 2;
+    case 'Finish'
+        disp('Bye!')
+        decision = 27;
+end
+
+if decision == 2
+    
+    % refine the zero level contour by further level set evolution with alfa=0
+    alfa=0;
+    iter_refine = 10;
+    phi = drlse_edge(phi, g, lambda, mu, alfa, epsilon, timestep, iter_inner, potentialFunction);
+
+    finalLSF=phi;
+    
+    pause(0.000001)
+      
+    [C] = contourc(phi, [0,0]);
+    [x,y] = C2xyz(C);
+        
+    numcontact=numel(x);
+        
+    if num_cont ~= numcontact
+       dim(numcontact) = 0;
+       num_cont = numcontact;
+    end
+        
+    if numel(x) == 1
+       set(dim,'XData',x{:});
+       set(dim,'YData',y{:});
+    else
+       for j=1:numel(x)
+                
+       set(dim(j),'XData',x{j});
+       set(dim(j),'YData',y{j});
+       end
+    end
+    str=['Final zero level contour, ', num2str(iter_outer*iter_inner+iter_refine), ' iterations'];
+    title(str);
+    
+    decision = 27;
+     
+end
+
+bucle = decision;
+
+end 
+
+end

@@ -8,7 +8,7 @@ imshow(Img,[], 'InitialMagnification',400);
 
 
 
-[phi, rect] = rectangles(Img);
+[phi] = rectangles(Img);
 
 
 %%DRLSE(Img,phi,rect);
@@ -109,6 +109,60 @@ for n=1:iter_outer
         n
     end
 end
-fprintf('Si quiere salir, pulse escape');               %%WHILE
-bucle = getkey;
+
+% Construct a questdlg with three options
+choice = questdlg('What do you want to do?', ...
+	'Options', ...
+	'Restart','Refine','Finish','Finish');
+% Handle response
+switch choice
+    case 'Restart'
+        decision = 1;
+    case 'Refine'
+        disp([choice 'Coming right up!'])
+        decision = 2;
+    case 'Finish'
+        disp('Bye!')
+        decision = 27;
+end
+
+if decision == 2
+    
+    % refine the zero level contour by further level set evolution with alfa=0
+    alfa=0;
+    iter_refine = 10;
+    phi = drlse_edge(phi, g, lambda, mu, alfa, epsilon, timestep, iter_inner, potentialFunction);
+
+    finalLSF=phi;
+    
+    pause(0.000001)
+      
+    [C] = contourc(phi, [0,0]);
+    [x,y] = C2xyz(C);
+        
+    numcontact=numel(x);
+        
+    if num_cont ~= numcontact
+       dim(numcontact) = 0;
+       num_cont = numcontact;
+    end
+        
+    if numel(x) == 1
+       set(dim,'XData',x{:});
+       set(dim,'YData',y{:});
+    else
+       for j=1:numel(x)
+                
+       set(dim(j),'XData',x{j});
+       set(dim(j),'YData',y{j});
+       end
+    end
+    str=['Final zero level contour, ', num2str(iter_outer*iter_inner+iter_refine), ' iterations'];
+    title(str);
+    
+    decision = 27;
+     
+end
+
+bucle = decision;
 end                                                     %%WHILE

@@ -1,4 +1,4 @@
-function [phi,number_of_rectangles] = rectangles(Image)
+function [phi] = rectangles(Image)
 % Returns the rectangles.
 
 warning('off','MATLAB:colon:nonIntegerIndex');
