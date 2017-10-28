@@ -6,7 +6,7 @@ clear all;
 %Img= dicomread(info);
 %imshow(Img,[], 'InitialMagnification',400);
 
-Img = imread('im4.bmp');
+Img = imread('im5.bmp');
 imagesc(Img,[0, 255]); axis off; axis equal; colormap(gray); hold on;
 
 
