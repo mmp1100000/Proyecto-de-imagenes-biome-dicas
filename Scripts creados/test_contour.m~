@@ -15,7 +15,6 @@ Img=double(Img(:,:,1));
 
 [phi] = rectangles(Img);
 
-Img=double(Img(:,:,1));
 %% parameter setting
 
 phiInicial = phi;                                               %%WHILE
@@ -94,6 +93,8 @@ for n=1:iter_outer
         numcontact=numel(x);
         
         if num_cont ~= numcontact
+            num_cont
+            numcontact
             for news = num_cont +1 : numcontact
                 dim(news) = plot(x{news-1},y{news-1},'r','linewidth',2);
             end
@@ -122,8 +123,8 @@ choice = questdlg('What do you want to do?', ...
 switch choice
     case 'Restart'
         decision = 1;
-    case 'Refine'
-        disp('Coming right up!')
+    case 'Refine '
+        disp([choice 'Coming right up!'])
         decision = 2;
     case 'Finish'
         disp('Bye!')
@@ -169,5 +170,4 @@ if decision == 2
 end
 
 bucle = decision;
-end                                      
-
+end                                                     %%WHILE
