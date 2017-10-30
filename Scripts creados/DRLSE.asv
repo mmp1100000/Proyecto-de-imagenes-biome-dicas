@@ -163,21 +163,14 @@ function [phi] = DRLSE(Img, phi)
         elseif decision == 1
                 choice = questdlg('What do you want to do?', ...
             'Options', ...
-            'Initial area','Finish contour','Finish','Finish');
+            'In','Refine','Finish','Finish');
         % Handle response
         switch choice
-            case 'Initial area'
+            case 'Restart'
                 decision = 1;
-            case 'Finish contour'
+            case 'Refine'
                 disp('Coming right up!')
                 decision = 2;
-            case 'Finish'
-                disp('Bye!')
-                decision = 27;
-        end
-        if decision==2
-            phiInicial=phi;
-        end
         end
 
         bucle = decision;
