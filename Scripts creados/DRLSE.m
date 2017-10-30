@@ -14,10 +14,10 @@ function [phi] = DRLSE(Img, phi)
     while bucle ~= 27                                               %%WHILE
         phi = phiInicial;
     
-        prompt={'\alpha','\lambda','time step','iterations'};
+        prompt={'\alpha','\lambda','time step','iterations','tamaño filtro','\sigma'};
         name='Inputs';
         numlines=1;
-        defaultanswer={'-1.5','5','5', '100'};
+        defaultanswer={'-1.5','5','5', '100','5','5'};
         options.Resize='on';
         options.WindowStyle='normal';
         options.Interpreter='tex';
@@ -26,7 +26,9 @@ function [phi] = DRLSE(Img, phi)
         S = [str2double(answer(1))
              str2double(answer(2))
              str2double(answer(3))
-             str2double(answer(4))];
+             str2double(answer(4))
+             str2double(answer(5))
+             str2double(answer(6))];
 
 
  
@@ -38,8 +40,8 @@ function [phi] = DRLSE(Img, phi)
         iter_inner=5;
         epsilon=1.5; % papramater that specifies the width of the DiracDelta function
 
-        sigma=1.2;%2;%0.8;    % scale parameter in Gaussian kernel
-        G=fspecial('gaussian',5,sigma); % Caussian kernel      %%%%%%%%15
+        sigma=S(6);%2;%0.8;    % scale parameter in Gaussian kernel
+        G=fspecial('gaussian',S(5),sigma); % Caussian kernel      %%%%%%%%15
         Img_smooth=conv2(Img,G,'same');  % smooth image by Gaussiin convolution
         [Ix,Iy]=gradient(Img_smooth);
         f=Ix.^2+Iy.^2;
