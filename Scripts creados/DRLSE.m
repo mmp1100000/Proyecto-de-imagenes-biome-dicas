@@ -14,7 +14,7 @@ function [phi] = DRLSE(Img, phi)
     while bucle ~= 27                                               %%WHILE
         phi = phiInicial;
     
-        prompt={'\alpha','\lambda','time step','iterations','tamaño filtro','\sigma'};
+        prompt={'\alpha','\lambda','time step','iterations','tama?o filtro','\sigma'};
         name='Inputs';
         numlines=1;
         defaultanswer={'-1.5','5','5', '100','5','5'};
@@ -141,7 +141,7 @@ function [phi] = DRLSE(Img, phi)
             numcontact=numel(x);
         
             if num_cont ~= numcontact
-                dim(numcontact) = 0;
+                dim(numcontact) = plot(x{numcontact-1},y{numcontact-1},'r','linewidth',2);        %%%%%%%%
                 num_cont = numcontact;
             end
         
