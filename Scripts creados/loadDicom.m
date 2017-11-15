@@ -8,7 +8,7 @@ path = d;
     d = dir(path);
     dirLen = size(d);
     dirLen = dirLen(1);
-    h=waitbar(0,'Loading images, please wait...')
+    h=waitbar(0,'Loading images, please wait...');
     
     j = 1;
     
