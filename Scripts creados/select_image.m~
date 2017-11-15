@@ -16,7 +16,14 @@ cnt = 1;
 key = 0;
 info = dicominfo(dicomlist(cnt).file);
 I = dicomread(info);
+fig = figure
+btn = uicontrol('Style', 'pushbutton', 'String', 'Next','Position', [20 20 50 20],'Callback', 'cla');
 curImg = imshow(I,[],'InitialMagnification','fit');
+
+   function nestedfx
+      disp('This is the nested function')
+   end
+
 while key ~= 27
     info = dicominfo(dicomlist(cnt).file);
     I = dicomread(info);
@@ -28,12 +35,20 @@ while key ~= 27
         key = getkey;
     end
     
-    if key == 29 && cnt ~= numel(dicomlist)
-        cnt = cnt + 1;
+    if key == 29 
+        if cnt ~= numel(dicomlist)
+            cnt = cnt + 1;
+        else
+            cnt=1;
+        end
         %pause(0.1);
     else
-        if key == 28 && cnt ~= 1
+        if key == 28 
+           if cnt ~= 1
             cnt = cnt - 1;
+           else
+            cnt=numel(dicomlist);
+           end
         end
     end  
 end %Show images
