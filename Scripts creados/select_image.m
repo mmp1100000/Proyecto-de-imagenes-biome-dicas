@@ -14,7 +14,6 @@ warning('off','MATLAB:nargchk:deprecated'); %Turn off getkey news
 
 dicomlist = loadDicom(uigetdir);
 cnt = 1;
-key = 0;
 info = dicominfo(dicomlist(cnt).file);
 I = dicomread(info);
 curImg = imshow(I,[],'InitialMagnification','fit');

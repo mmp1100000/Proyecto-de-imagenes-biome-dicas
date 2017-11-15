@@ -1,0 +1,19 @@
+function [I] = select_image2()
+
+cnt = 1;
+info = dicominfo(dicomlist(cnt).file);
+I = dicomread(info);
+curImg = imshow(I,[],'InitialMagnification','fit');
+
+
+    function [] = nextImg()
+        info = dicominfo(dicomlist(cnt).file);
+        I = dicomread(info);
+        set(curImg,'CData',I);
+        title(strcat('Z:      ',num2str(round(dicomlist(cnt).pos))));
+        cnt = cnt + 1;
+    end
+
+
+
+end
