@@ -8,8 +8,9 @@ path = d;
     d = dir(path);
     dirLen = size(d);
     dirLen = dirLen(1);
+    dicomVector = struct('file', cell(1, dirLen), 'pos', cell(1, dirLen)); 
     h=waitbar(0,'Loading images, please wait...');
-    
+   
     j = 1;
     
     for file = 1:dirLen

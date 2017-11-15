@@ -2,7 +2,7 @@ function [I] = select_image2()
 % SELECT_IMAGE2 Select one dicom image. After running, you must select the dir where the images
 %are. In order to select the image that you want, there are several buttons. 
 %
-% I = imshow() returns that dicom images.
+% I = imshow() returns the dicom image that you have chosen.
 %
 
 %%
@@ -19,27 +19,33 @@ function [I] = select_image2()
     info = dicominfo(dicomlist(cnt).file);
     I = dicomread(info);
     curImg = imshow(I,[],'InitialMagnification','fit');
+    title(strcat({'Z:'},...
+                         {' '},...
+                         {num2str(round(dicomlist(cnt).pos))})); 
+                         ax = gca; 
+                         ttl = ax.Title; 
+                         ttl.FontSize = 14;
 %%
 
 %% Next Button 
-    S.pb = uicontrol('style', 'pushbutton',...
-                     'string', 'Next',...
-                     'position', [20 20 50 20],...
-                     'callback', {@nextImg});
+    uicontrol('style', 'pushbutton',...
+              'string', 'Next',...
+              'position', [20 20 50 20],...
+              'callback', {@nextImg});
 %%
 
 %% Previous Button
-    S.pb = uicontrol('style', 'pushbutton',...
-                     'string', 'Previous',...
-                     'position', [80 20 50 20],...
-                     'callback', {@prevImg});
+    uicontrol('style', 'pushbutton',...
+              'string', 'Previous',...
+              'position', [80 20 50 20],...
+              'callback', {@prevImg});
 
 
 %% End Button
-    S.pe = uicontrol('style', 'pushbutton',...
-                     'string', 'End',...
-                     'position', [140 20 50 20],...
-                     'callback', {@endFunc});
+    uicontrol('style', 'pushbutton',...
+              'string', 'End',...
+              'position', [140 20 50 20],...
+              'callback', {@endFunc});
 %%
 
 %% Variable which allows to finish this function
@@ -50,22 +56,36 @@ function [I] = select_image2()
 %% Handle function "nextImg" 
 %It shows the next image 
     function [] = nextImg(varargin)
-        info = dicominfo(dicomlist(cnt).file);
-        I = dicomread(info);
-        set(curImg,'CData',I);
-        title(strcat('Z:      ',num2str(round(dicomlist(cnt).pos))));
-        cnt = cnt + 1;
+        if cnt ~= numel(dicomlist)
+            cnt = cnt + 1;
+            info = dicominfo(dicomlist(cnt).file);
+            I = dicomread(info);
+            set(curImg,'CData',I);
+            title(strcat({'Z:'},...
+                         {' '},...
+                         {num2str(round(dicomlist(cnt).pos))})); 
+                         ax = gca; 
+                         ttl = ax.Title; 
+                         ttl.FontSize = 14;
+        end
     end
 %%
 
 %% Handle function "previousImg"
 %It shows the previous image
     function [] = prevImg(varargin)
-        info = dicominfo(dicomlist(cnt).file);
-        I = dicomread(info);
-        set(curImg,'CData',I);
-        title(strcat('Z:      ',num2str(round(dicomlist(cnt).pos))));
-        cnt = cnt - 1;
+        if cnt ~= 1
+            cnt = cnt - 1;
+            info = dicominfo(dicomlist(cnt).file);
+            I = dicomread(info);
+            set(curImg,'CData',I);
+            title(strcat({'Z:'},...
+                         {' '},...
+                         {num2str(round(dicomlist(cnt).pos))})); 
+                         ax = gca; 
+                         ttl = ax.Title; 
+                         ttl.FontSize = 14;             
+        end
     end
 %%
 
