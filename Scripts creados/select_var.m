@@ -1,0 +1,9 @@
+ function [answer]= select_var()
+ prompt={'\alpha','\lambda','time step','iterations','tama?o filtro','\sigma'};
+        name='Inputs';
+        numlines=1;
+        defaultanswer={'-1.5','5','5', '100','5','5'};
+        options.Resize='on';
+        options.WindowStyle='normal';
+        options.Interpreter='tex';
+        answer=inputdlg(prompt,name,numlines,defaultanswer,options);
