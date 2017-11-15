@@ -1,5 +1,5 @@
 
-I = select_image();
+I = select_image2();
 
 phi = rectangles(I);
 

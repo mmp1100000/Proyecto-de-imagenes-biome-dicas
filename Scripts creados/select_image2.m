@@ -8,7 +8,8 @@ info = dicominfo(dicomlist(cnt).file);
 I = dicomread(info);
 curImg = imshow(I,[],'InitialMagnification','fit')
 S.pb = uicontrol('style', 'pushbutton', 'string', 'Next','position', [20 20 50 20],'callback', {@nextImg});
-
+S.pe = uicontrol('style', 'pushbutton', 'string', 'End','position', [80 20 50 20],'callback', {@endFunc});
+n=0;
     function [] = nextImg(varargin)
         info = dicominfo(dicomlist(cnt).file);
         I = dicomread(info);
@@ -25,4 +26,12 @@ S.pb = uicontrol('style', 'pushbutton', 'string', 'Next','position', [20 20 50 2
         cnt = cnt - 1;
     end
 
+function [] = endFunc(varargin)
+   n=1; 
+end
+
+    while n==0
+       drawnow;
+    end
+    
 end
