@@ -19,6 +19,12 @@ function [I] = select_image2()
     info = dicominfo(dicomlist(cnt).file);
     I = dicomread(info);
     curImg = imshow(I,[],'InitialMagnification','fit');
+    title(strcat({'Z:'},...
+                         {' '},...
+                         {num2str(round(dicomlist(cnt).pos))})); 
+                         ax = gca; 
+                         ttl = ax.Title; 
+                         ttl.FontSize = 14;
 %%
 
 %% Next Button 
@@ -50,22 +56,36 @@ function [I] = select_image2()
 %% Handle function "nextImg" 
 %It shows the next image 
     function [] = nextImg(varargin)
-        info = dicominfo(dicomlist(cnt).file);
-        I = dicomread(info);
-        set(curImg,'CData',I);
-        title(strcat('Z:      ',num2str(round(dicomlist(cnt).pos))));
-        cnt = cnt + 1;
+        if cnt ~= numel(dicomlist)
+            cnt = cnt + 1;
+            info = dicominfo(dicomlist(cnt).file);
+            I = dicomread(info);
+            set(curImg,'CData',I);
+            title(strcat({'Z:'},...
+                         {' '},...
+                         {num2str(round(dicomlist(cnt).pos))})); 
+                         ax = gca; 
+                         ttl = ax.Title; 
+                         ttl.FontSize = 14;
+        end
     end
 %%
 
 %% Handle function "previousImg"
 %It shows the previous image
     function [] = prevImg(varargin)
-        info = dicominfo(dicomlist(cnt).file);
-        I = dicomread(info);
-        set(curImg,'CData',I);
-        title(strcat('Z:      ',num2str(round(dicomlist(cnt).pos))));
-        cnt = cnt - 1;
+        if cnt ~= 1
+            cnt = cnt - 1;
+            info = dicominfo(dicomlist(cnt).file);
+            I = dicomread(info);
+            set(curImg,'CData',I);
+            title(strcat({'Z:'},...
+                         {' '},...
+                         {num2str(round(dicomlist(cnt).pos))})); 
+                         ax = gca; 
+                         ttl = ax.Title; 
+                         ttl.FontSize = 14;             
+        end
     end
 %%
 
