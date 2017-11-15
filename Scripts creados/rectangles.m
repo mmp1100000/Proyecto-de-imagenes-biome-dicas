@@ -25,7 +25,7 @@ for cnt = 1:number_of_rectangles
 initialLSF(min(Y(1),Y(2)) : max(Y(1),Y(2)),min(X(1),X(2)):max(X(1),X(2)))= -c0;
 phi=initialLSF;
 hold on;
-contour(phi, [0,0], 'r','LineWidth',2);
+contour(phi, [0,0], 'LineColor',[1,0.5,0.3],'LineWidth',2);
 end
 
 end

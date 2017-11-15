@@ -10,5 +10,6 @@ imshow(I,[], 'InitialMagnification',400);
 I=double(I(:,:,1));
 phi = rectangles(I);
 
-DRLSE(I,phi);
+var=select_var();
+DRLSE(I,phi,var);
 

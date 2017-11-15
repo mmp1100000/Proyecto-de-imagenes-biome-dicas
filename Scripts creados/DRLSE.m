@@ -1,4 +1,4 @@
-function [phi] = DRLSE(Img, phi)
+function [phi,vari] = DRLSE(Img, phi,vari)
 %UNTITLED7 Summary of this function goes here
 %   Detailed explanation goes here
 
@@ -14,21 +14,14 @@ bucle = 0;
 while bucle ~= 27                                               %%WHILE
     phi = phiInicial;
     
-    prompt={'\alpha','\lambda','time step','iterations','tama?o filtro','\sigma'};
-    name='Inputs';
-    numlines=1;
-    defaultanswer={'-1.5','5','5', '100','5','5'};
-    options.Resize='on';
-    options.WindowStyle='normal';
-    options.Interpreter='tex';
-    answer=inputdlg(prompt,name,numlines,defaultanswer,options);
     
-    S = [str2double(answer(1))
-        str2double(answer(2))
-        str2double(answer(3))
-        str2double(answer(4))
-        str2double(answer(5))
-        str2double(answer(6))];
+    
+    S = [str2double(vari(1))
+        str2double(vari(2))
+        str2double(vari(3))
+        str2double(vari(4))
+        str2double(vari(5))
+        str2double(vari(6))];
     
     
     
@@ -165,9 +158,11 @@ while bucle ~= 27                                               %%WHILE
         switch choice
             case 'Initial area'
                 decision = 1;
+                vari=select_var();
             case 'Finish contour'
                 disp('Coming right up!')
                 decision = 2;
+                vari=select_var();
             case 'Finish'
                 disp('Bye!')
                 decision = 27;
