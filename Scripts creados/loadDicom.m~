@@ -11,9 +11,10 @@ path = d;
     dicomVector = struct('file', cell(1, dirLen), 'pos', cell(1, dirLen)); 
     h=waitbar(0,'Loading images, please wait...');
    
+    titl = 'Importing image '
     j = 1;
     for file = 1:dirLen
-        h.Name=sprintf('%s %s','Importing image',num2str(file));
+        h.Name=strcat('Importing image ',num2str(file));
         waitbar(file/dirLen);
         if(d(file).isdir == 0)
             fileRoute = strcat(path,d(file).name);

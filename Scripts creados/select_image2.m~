@@ -39,13 +39,15 @@ function [I] = select_image2()
               'string', 'Previous',...
               'position', [180 20 50 20],...
               'callback', {@prevImg});
-%%
-                    
+          
+          
 %% End Button
     uicontrol('style', 'pushbutton',...
               'string', 'End',...
               'position', [240 20 50 20],...
               'callback', {@endFunc});
+%%
+
 %%
 
 %% Variable which allows to finish this function

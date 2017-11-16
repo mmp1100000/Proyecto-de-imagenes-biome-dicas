@@ -62,10 +62,10 @@ while bucle ~= 27                                               %%WHILE
     [x,y] = C2xyz(C);
     
     if numel(x) == 1
-        dim =  plot(x{:},y{:},'r','linewidth',2);
+        dim =  plot(x{:},y{:},'Color',[1,0.5,0.3],'linewidth',2);
     else
         for p=1:numel(x)
-            dim(p) = plot(x{p},y{p},'r','linewidth',2);
+            dim(p) = plot(x{p},y{p},'Color',[1,0.5,0.3],'linewidth',2);
         end
     end
     
@@ -81,7 +81,7 @@ while bucle ~= 27                                               %%WHILE
         
         if num_cont ~= numcontact
             for news = num_cont +1 : numcontact
-                dim(news) = plot(x{news-1},y{news-1},'r','linewidth',2);
+                dim(news) = plot(x{news-1},y{news-1},'Color',[1,0.5,0.3],'linewidth',2);
             end
             num_cont = numcontact;
         end
@@ -131,7 +131,7 @@ while bucle ~= 27                                               %%WHILE
         numcontact=numel(x);
         
         if num_cont ~= numcontact
-            dim(numcontact) = plot(x{numcontact-1},y{numcontact-1},'r','linewidth',2);        %%%%%%%%
+            dim(numcontact) = plot(x{numcontact-1},y{numcontact-1},'Color',[1,0.5,0.3],'linewidth',2);        %%%%%%%%
             num_cont = numcontact;
         end
         
