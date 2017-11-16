@@ -1,4 +1,4 @@
-function [phi,vari,area] = DRLSE(Img, phi,vari)
+function [phi,vari,area] = DRLSE(Img, phi,vari,initial)
 %UNTITLED7 Summary of this function goes here
 %   Detailed explanation goes here
 
@@ -97,7 +97,8 @@ while bucle ~= 27                                               %%WHILE
         end
         
     end
-    
+    if initial == 1
+
     % Construct a questdlg with three options
     choice = questdlg('What do you want to do?', ...
         'Options', ...
@@ -173,6 +174,7 @@ while bucle ~= 27                                               %%WHILE
     end
     
     bucle = decision;
+    end
 end
     area = polyarea(x{:},y{:});
 end

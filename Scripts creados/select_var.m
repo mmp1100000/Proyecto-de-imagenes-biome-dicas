@@ -1,8 +1,8 @@
  function [answer]= select_var()
- prompt={'\alpha','\lambda','time step','iterations','tama?o filtro','\sigma'};
+ prompt={'\alpha','\lambda','time step','iterations','tama?o filtro','\sigma','min_area'};
         name='Inputs';
         numlines=1;
-        defaultanswer={'-1.5','5','5', '100','5','5'};
+        defaultanswer={'-1.5','5','5', '100','5','5','0.05'};
         options.Resize='on';
         options.WindowStyle='normal';
         options.Interpreter='tex';
