@@ -1,4 +1,4 @@
-function [I] = select_image2()
+function [I,z,dicomlist] = select_image2()
 % SELECT_IMAGE2 Select one dicom image. After running, you must select the dir where the images
 %are. In order to select the image that you want, there are several buttons. 
 %
@@ -19,9 +19,10 @@ function [I] = select_image2()
     info = dicominfo(dicomlist(cnt).file);
     I = dicomread(info);
     curImg = imshow(I,[],'InitialMagnification','fit');
+    z=round(dicomlist(cnt).pos);
     title(strcat({'Z:'},...
                          {' '},...
-                         {num2str(round(dicomlist(cnt).pos))})); 
+                         {num2str(z)})); 
                          ax = gca; 
                          ttl = ax.Title; 
                          ttl.FontSize = 14;

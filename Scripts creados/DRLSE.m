@@ -1,4 +1,4 @@
-function [phi,vari] = DRLSE(Img, phi,vari)
+function [phi,vari,area] = DRLSE(Img, phi,vari)
 %UNTITLED7 Summary of this function goes here
 %   Detailed explanation goes here
 
@@ -174,4 +174,5 @@ while bucle ~= 27                                               %%WHILE
     
     bucle = decision;
 end
+    area = polyarea(x{:},y{:});
 end
