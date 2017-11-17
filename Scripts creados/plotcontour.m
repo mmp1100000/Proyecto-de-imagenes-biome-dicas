@@ -6,7 +6,7 @@ function [x,y,num_cont,dim] = plotcontour(C,num_cont,dim)
 numcontact = numel(x);
 
 if num_cont ~= numcontact
-    dim(numcontact) = plot(x{numcontact-1},y{numcontact-1},'Color',[1,0.5,0.3],'linewidth',2);        %%%%%%%%
+    dim(numcontact) = plot(x{max(numcontact-1,0)},y{max(numcontact-1,0)},'Color',[1,0.5,0.3],'linewidth',2);        %%%%%%%%
     num_cont = numcontact;
 end
 
