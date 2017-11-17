@@ -1,5 +1,5 @@
  function [answer]= select_var()
- prompt={'\alpha','\lambda','time step','iterations','tama?o filtro','\sigma','min_area'};
+ prompt={'\alpha','\lambda','time step','iterations','filter size','\sigma','min_area'};
         name='Inputs';
         numlines=1;
         defaultanswer={'-1.5','5','5', '100','5','5','0.05'};
