@@ -3,7 +3,8 @@ function [area] = pixel_area(phi)
 %   Detailed explanation goes here
 [C] = contourc(phi, [0,0]);
 [x,y] = C2xyz(C);
-area = polyarea(x{:},y{:});
-
+area = 0;
+for ii=1 : numel(x)
+area = area + polyarea(x{ii},y{ii});
 end
 

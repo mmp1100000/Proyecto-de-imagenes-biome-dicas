@@ -1,4 +1,4 @@
-function [x,y,phi] = refine(iter_refine, phi, g, lambda, mu, alfa, epsilon, timestep, iter_inner, potentialFunction)
+function [x,y,phi] = refine(iter_outer,dim,num_cont,iter_refine, phi, g, lambda, mu, alfa, epsilon, timestep, iter_inner, potentialFunction)
 %UNTITLED8 Summary of this function goes here
 %   Detailed explanation goes here
 phi = drlse_edge(phi, g, lambda, mu, alfa, epsilon, timestep, iter_inner, potentialFunction);

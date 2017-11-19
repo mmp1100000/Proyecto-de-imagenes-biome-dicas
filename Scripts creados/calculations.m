@@ -1,6 +1,10 @@
 function [alfa,lambda,timestep,iter_outer,mu,iter_inner,epsilon,g,potentialFunction] = calculations(Img,vari)
-%UNTITLED9 Summary of this function goes here
-%   Detailed explanation goes here
+%Calculations makes all the calculations necessary in order
+%
+%
+%
+%
+%
 warning('off','MATLAB:conv2:uint16Obsolete');
 
 S = [str2double(vari(1))...

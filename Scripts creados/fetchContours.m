@@ -6,7 +6,7 @@ max = round(numel(dicomList)/2);
 phiV = struct('phi',cell(1,max),'cnt',cell(1,max));
 A = struct('area',cell(1,max),'cnt',cell(1,max));
 vari(1)={'0'};
-vari(4)={'10'};
+vari(4)={'100'};
 cntI = cnt;
 figure;%%
 while area > str2double(vari(7))*areaInit && numel(dicomList)>=cnt
@@ -29,6 +29,7 @@ while area > str2double(vari(7))*areaInit && numel(dicomList)>=cnt
         end
     catch ME
         if (strcmp(ME.identifier,'MATLAB:TooManyInputs'))
+            pause;
             info = dicominfo(dicomList(cnt-1).file);
             Img = dicomread(info);
             imshow(Img,[]);

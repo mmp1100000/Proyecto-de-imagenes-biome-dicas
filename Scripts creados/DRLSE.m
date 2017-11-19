@@ -42,7 +42,7 @@ while bucle ~= 27
         % refine the zero level contour by further level set evolution with alfa=0
         alfa=0;
         iter_refine = 10;
-        [x,y,phi] = refine(iter_refine,phi, g, lambda, mu, alfa,...
+        [x,y,phi] = refine(iter_outer,dim,num_cont,iter_refine,phi, g, lambda, mu, alfa,...
                            epsilon, timestep, iter_inner, potentialFunction);
         
         decision = 27;
@@ -57,5 +57,9 @@ while bucle ~= 27
     
     bucle = decision;
 end
+    area = 0;
+    for ii=1 : numel(x)
+    area = area + polyarea(x{ii},y{ii});
+    end
     area = polyarea(x{:},y{:});
 end
