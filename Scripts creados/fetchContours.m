@@ -1,6 +1,6 @@
 function [ cnt,phiV,A ] = fetchContours( dicomList,vari,phi,cnt,areaInit)
 % FETCHCONTOURS makes magic.
-%
+% TODO Do something
 area = areaInit;
 max = round(numel(dicomList)/2);
 phiV = struct('phi',cell(1,max),'cnt',cell(1,max));
@@ -20,7 +20,7 @@ while area > str2double(vari(7))*areaInit && numel(dicomList)>=cnt
         for n=1:iter_outer
             phi = drlse_edge(phi, g, lambda, mu, alfa, epsilon, timestep, iter_inner, potentialFunction);
             area = pixel_area(phi);
-            
+
             [C] = contourc(phi, [0,0]);
             [x,y] = C2xyz(C);
             dim = initialContour(x,y);
@@ -36,7 +36,7 @@ while area > str2double(vari(7))*areaInit && numel(dicomList)>=cnt
             break;
         end
     end
-    
+
     phiV(cnt) = struct('phi',phi,'cnt',cnt);
     A(cnt) = struct('area',area,'cnt',cnt);
     cnt = cnt+1;
