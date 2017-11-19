@@ -1,6 +1,10 @@
 function [area] = pixel_area(phi)
-%UNTITLED10 Summary of this function goes here
-%   Detailed explanation goes here
+%PIXEL_AREA calculate the area inside each contour over the image. 
+%It extracts the axis x and y and call the function polyarea.
+%
+% [area] = PIXEL_AREA(phi) returns the total area.
+%
+
 [C] = contourc(phi, [0,0]);
 [x,y] = C2xyz(C);
 area = 0;

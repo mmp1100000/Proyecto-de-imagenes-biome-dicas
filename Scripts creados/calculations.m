@@ -1,10 +1,7 @@
 function [alfa,lambda,timestep,iter_outer,mu,iter_inner,epsilon,g,potentialFunction] = calculations(Img,vari)
-%Calculations makes all the calculations necessary in order
+%Calculations makes all the calculations necessary for drlse_edge
 %
-%
-%
-%
-%
+
 warning('off','MATLAB:conv2:uint16Obsolete');
 
 S = [str2double(vari(1))...
