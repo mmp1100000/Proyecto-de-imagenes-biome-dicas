@@ -1,4 +1,4 @@
-function [ x,vectHist ] = getHist( pixelMatrix,bitDepth)
+function [ x,vectHist ] = getHist(pixelMatrix,bitDepth)
     %GETHIST This function returns a histogram of an input matrix.
     %Has the option of avoiding zeros.
     pixelVector = zeros(1,numel(pixelMatrix));
