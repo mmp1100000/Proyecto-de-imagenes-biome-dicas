@@ -16,7 +16,8 @@ numcontact = numel(x);
 orange = [1,0.5,0.3];
 
 if num_cont ~= numcontact
-    dim(numcontact) = plot(x{max(numcontact-1,1)},y{max(numcontact-1,1)},'Color',orange,'linewidth',2);        %%%%%%%%
+    dim(numcontact) = plot(x{max(numcontact-1,1)},y{max(numcontact-1,1)},...
+                          'Color',orange,'linewidth',2);
     num_cont = numcontact;
 end
 
@@ -25,6 +26,7 @@ if numel(x) == 1
     set(dim,'YData',y{:});
 else
     for j=1:numel(x)
+        dim(j) = line(1,1);
         set(dim(j),'XData',x{j});
         set(dim(j),'YData',y{j});
     end

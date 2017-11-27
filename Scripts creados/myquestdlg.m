@@ -40,12 +40,10 @@ if kind == 1
         case 'Initial area'
             decision = 1;
             vari=select_var();
-        case 'Finish contour'
-            disp('Coming right up!')
+        case 'Final contour'
             decision = 2;
             vari=select_var();
         case 'Finish'
-            disp('Bye!')
             decision = 27;
     end
     
@@ -59,11 +57,10 @@ elseif kind == 0
         case 'Restart'
             decision = 1;
         case 'Refine'
-            disp('Coming right up!')
+            disp('Refining!')
             decision = 2;
             
         case 'Finish'
-            disp('Bye!')
             decision = 27;
     end
 end

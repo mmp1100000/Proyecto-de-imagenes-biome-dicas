@@ -27,8 +27,6 @@ f=Ix.^2+Iy.^2;
 g=1./(1+f);  % edge indicator function.
 
 
-
-
 potential=2;
 
 if potential ==1

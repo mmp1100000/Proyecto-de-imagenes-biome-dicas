@@ -48,7 +48,7 @@ while bucle ~= 27
         decision = 27;
         
     elseif decision == 1
-        decision = myquestdlg(1);
+        [decision,vari] = myquestdlg(1);
         
         if decision==2
             phiInicial=phi;

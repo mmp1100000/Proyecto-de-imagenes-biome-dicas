@@ -12,10 +12,10 @@ function [dim] = initialContour(x,y,dimension)
 
     switch nargin
         case 2
-    dimension = 10;       
+    dimension = 50;       
     end
     
-    dim = gobjects(dimension,1);
+    dim = line(dimension,1);
     orange = [1,0.5,0.3];
     
 if numel(x) == 1
