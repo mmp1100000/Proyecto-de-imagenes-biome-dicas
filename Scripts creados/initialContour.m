@@ -8,7 +8,7 @@ function [dim] = initialContour(x,y,dimension)
 % [dim] = initialContour(x,y,dimension) preallocate dim with the desired
 % dimension.
 %
-% Default dimension of dim is 10, but it culd be higher if it is necessary or desired. 
+% Default dimension of dim is 50, but it culd be higher if it is necessary or desired. 
 
     switch nargin
         case 2
