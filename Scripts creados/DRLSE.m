@@ -57,5 +57,9 @@ while bucle ~= 27
     
     bucle = decision;
 end
-    area = pixel_area(phi);
+    area = 0;
+    for ii=1 : numel(x)
+    area = area + polyarea(x{ii},y{ii});
+    end
+    area = polyarea(x{:},y{:});
 end
