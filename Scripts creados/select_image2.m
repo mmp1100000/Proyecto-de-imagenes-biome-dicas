@@ -1,4 +1,4 @@
-function [I,cnt,dicomlist] = select_image2()
+function [I,cnt,dicomlist,info] = select_image2()
 % SELECT_IMAGE2 Select one dicom image. After running, you must select the dir where the images
 %are. In order to select the image that you want, there are several buttons. 
 %
