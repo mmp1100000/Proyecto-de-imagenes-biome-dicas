@@ -14,6 +14,8 @@ close all;
 
 Img = imread('twocells.bmp'); % real miscroscope image of cells
 Img=double(Img(:,:,1));
+
+
 %% parameter setting
 timestep=5;  % time step
 mu=0.2/timestep;  % coefficient of the distance regularization term R(phi)
@@ -22,6 +24,7 @@ iter_outer=40;
 lambda=5; % coefficient of the weighted length term L(phi)
 alfa=1.5;  % coefficient of the weighted area term A(phi)
 epsilon=1.5; % papramater that specifies the width of the DiracDelta function
+%%
 
 sigma=1.5;     % scale parameter in Gaussian kernel
 G=fspecial('gaussian',15,sigma);

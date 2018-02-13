@@ -19,7 +19,7 @@ while bucle ~= 27
     % start level set evolution
     
     figure(2);
-    imshow(Img,[]); axis off; axis equal; hold on;
+    imshow(Img,[],'InitialMagnification','fit'); axis off; axis equal; hold on;
     [C] = contourc(phi, [0,0]);
     [x,y] = C2xyz(C);
     num_cont = numel(x);
