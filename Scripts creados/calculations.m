@@ -1,6 +1,6 @@
 function [alfa,lambda,timestep,iter_outer,mu,iter_inner,epsilon,g,potentialFunction] = calculations(Img,vari)
-%CALCULATIONS makes all the calculations necessary for drlse_edge
-% 
+%CALCULATIONS makes all the necessary calculations for drlse_edge
+%
 
 warning('off','MATLAB:conv2:uint16Obsolete');
 
@@ -20,12 +20,18 @@ iter_inner=5;
 epsilon=1.5; % papramater that specifies the width of the DiracDelta function
 
 sigma=S(6);%2;%0.8;    % scale parameter in Gaussian kernel
-G=fspecial('gaussian',S(5),sigma); % Caussian kernel      %%%%%%%%15
-Img_smooth=conv2(Img,G,'same');  % smooth image by Gaussiin convolution
+
+%%%Updated to a new implementation
+%G=fspecial('gaussian',S(5),sigma); % Caussian kernel
+%Img_smooth=conv2(Img,G,'same');  % smooth image by Gaussian convolution
+Img_smooth=imgaussfilt(Img,sigma); % Applies a gaussian filter to the image
+%%%
+
+%%%TODO Comment this portion of code
 [Ix,Iy]=gradient(Img_smooth);
 f=Ix.^2+Iy.^2;
 g=1./(1+f);  % edge indicator function.
-
+%%%
 
 potential=2;
 

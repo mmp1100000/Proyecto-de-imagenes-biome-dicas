@@ -1,6 +1,6 @@
 function [phiV,A ] = fetchContours( dicomList,vari,phi,cnt,areaInit)
-% FETCHCONTOURS makes magic.
-% TODO Do something
+% FETCHCONTOURS replicates active contour process for rest of the images.
+% TODO Comment rest of the code.
 area = areaInit;
 phiInit = phi;
 max = round(numel(dicomList));%%/2);
@@ -21,12 +21,12 @@ while area > str2double(vari(7))*areaInit && numel(dicomList)>=cnt
     hold on
     [alfa,lambda,timestep,iter_outer,mu,...
         iter_inner,epsilon,g,potentialFunction] = calculations(Img,vari);
-    
+
     for n=1:iter_outer
         phi = drlse_edge(phi, g, lambda, mu, alfa, epsilon,...
             timestep, iter_inner, potentialFunction);
         area = pixel_area(phi);
-        
+
         if area ~= 0
             [C] = contourc(phi, [0,0]);
             [x,y] = C2xyz(C);
@@ -35,7 +35,7 @@ while area > str2double(vari(7))*areaInit && numel(dicomList)>=cnt
             drawnow;
         end
     end
-    
+
     phiV(cnt) = struct('phi',phi,'cnt',cnt);
     A(cnt) = struct('area',area,'cnt',cnt);
     cnt = cnt+1;
@@ -54,12 +54,12 @@ while area > str2double(vari(7))*areaInit && cnt > 0
     hold on
     [alfa,lambda,timestep,iter_outer,mu,...
         iter_inner,epsilon,g,potentialFunction] = calculations(Img,vari);
-    
+
     for n=1:iter_outer
         phi = drlse_edge(phi, g, lambda, mu, alfa, epsilon,...
             timestep, iter_inner, potentialFunction);
         area = pixel_area(phi);
-        
+
         if area ~= 0
             [C] = contourc(phi, [0,0]);
             [x,y] = C2xyz(C);
@@ -68,7 +68,7 @@ while area > str2double(vari(7))*areaInit && cnt > 0
             drawnow;
         end
     end
-    
+
     phiV(cnt) = struct('phi',phi,'cnt',cnt);
     A(cnt) = struct('area',area,'cnt',cnt);
     cnt = cnt-1;
